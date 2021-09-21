@@ -2,7 +2,7 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract ReferralV2 is Initializable {
+contract TestV2 is Initializable {
 
     uint256 public hasInitialValue;
 
