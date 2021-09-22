@@ -2,10 +2,10 @@ const { ethers, upgrades } = require('hardhat');
 
 async function main() {
   // We get the contract to deploy
-  const Test = await ethers.getContractFactory('Test');
-  const ref =   await upgrades.deployProxy(Test);
+  const Referral = await ethers.getContractFactory('Referral');
+  const ref =   await upgrades.deployProxy(Referral);
 
-  console.log("Test deployed to:", ref.address);
+  console.log("Referral deployed to:", ref.address);
 }
 
 main()

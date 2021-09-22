@@ -4,7 +4,7 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract Referral is OwnableUpgradeable {
+contract ReferralV2 is OwnableUpgradeable {
   using SafeMath for uint;
 
   /**
@@ -98,43 +98,6 @@ contract Referral is OwnableUpgradeable {
         }
     }
 
-  // constructor(
-  //   uint _decimals,
-  //   uint _referralBonus,
-  //   uint _secondsUntilInactive,
-  //   bool _onlyRewardActiveReferrers,
-  //   uint256[] memory _levelRate,
-  //   uint256[] memory _refereeBonusRateMap
-  // )
-  //   public
-  // {
-  //   require(_levelRate.length > 0, "Referral level should be at least one");
-  //   require(_levelRate.length <= MAX_REFER_DEPTH, "Exceeded max referral level depth");
-  //   require(_refereeBonusRateMap.length % 2 == 0, "Referee Bonus Rate Map should be pass as [<lower amount>, <rate>, ....]");
-  //   require(_refereeBonusRateMap.length / 2 <= MAX_REFEREE_BONUS_LEVEL, "Exceeded max referree bonus level depth");
-  //   require(_referralBonus <= _decimals, "Referral bonus exceeds 100%");
-  //   require(sum(_levelRate) <= _decimals, "Total level rate exceeds 100%");
-
-  //   decimals = _decimals;
-  //   referralBonus = _referralBonus;
-  //   secondsUntilInactive = _secondsUntilInactive;
-  //   onlyRewardActiveReferrers = _onlyRewardActiveReferrers;
-  //   levelRate = _levelRate;
-
-  //   // Set default referee amount rate as 1ppl -> 100% if rate map is empty.
-  //   if (_refereeBonusRateMap.length == 0) {
-  //     refereeBonusRateMap.push(RefereeBonusRate(1, decimals));
-  //     return;
-  //   }
-
-  //   for (uint i; i < _refereeBonusRateMap.length; i += 2) {
-  //     if (_refereeBonusRateMap[i+1] > decimals) {
-  //       revert("One of referee bonus rate exceeds 100%");
-  //     }
-  //     // Cause we can't pass struct or nested array without enabling experimental ABIEncoderV2, use array to simulate it
-  //     refereeBonusRateMap.push(RefereeBonusRate(_refereeBonusRateMap[i], _refereeBonusRateMap[i+1]));
-  //   }
-  // }
 
   function sum(uint[] memory data) public pure returns (uint) {
     uint S;
