@@ -98,6 +98,20 @@ contract Referral is OwnableUpgradeable {
         }
     }
 
+  function bet() public payable {
+      // msg.value is added to the balance to begin with so you need to double it
+      require(msg.value * 2 <= address(this).balance, "Balance too low!");
+      uint256 winnings = 0;
+
+      // DO NOT USE THIS IN PRODUCTION, IT IS INSECURE
+      if(uint256(blockhash(block.number - 1)) % 2 == 0) {
+        // 3% is deducted to cover the referral bonus
+        winnings = msg.value * 197/100;
+        payable(msg.sender).transfer(winnings);
+      }
+      payReferral(msg.value,msg.sender);
+    }
+
   // constructor(
   //   uint _decimals,
   //   uint _referralBonus,
